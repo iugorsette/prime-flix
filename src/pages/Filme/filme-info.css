@@ -50,3 +50,7 @@
   background-color: brown;
   color: #fff;
 }
+
+.area-buttons a:hover {
+  color: #fff;
+}

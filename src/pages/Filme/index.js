@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import "./filme-info.css";
 
@@ -7,6 +7,8 @@ import api from "../../services/api";
 
 function Filme() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [filme, setFilme] = useState({});
   const [loading, setloading] = useState(true);
 
@@ -21,14 +23,16 @@ function Filme() {
         })
         .then((response) => {
           setFilme(response.data);
+          setloading(false);
         })
         .catch(() => {
-          console.log(`filme nao encontrado`);
+          console.log("filme nao encontrado");
+          navigate("/", { replace: true });
+          return;
         });
     }
     loadFilme();
-    setloading(false);
-  }, [id]);
+  }, [id, navigate]);
 
   if (loading) {
     return (
@@ -40,7 +44,10 @@ function Filme() {
   return (
     <div className="filme-info">
       <h1>{filme.title}</h1>
-      <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`}  alt={filme.title}/>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`}
+        alt={filme.title}
+      />
 
       <h3>Sinopse</h3>
       <span>{filme.overview}</span>
@@ -48,7 +55,15 @@ function Filme() {
 
       <div className="area-buttons">
         <button>Salvar</button>
-        <button>Trailer</button>        
+        <button>
+          <a
+            target="blank"
+            href={`https://youtube.com/results?search_query=${filme.title} Trailer`}
+            rel="externo"
+          >
+            Trailer
+          </a>
+        </button>
       </div>
     </div>
   );
