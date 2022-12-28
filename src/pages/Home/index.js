@@ -16,7 +16,7 @@ function Home() {
           page: 1,
         },
       });
-      setFilmes(response.data.results.slice(0, 10));
+      setFilmes(response.data.results.slice(0, 20));
       setloading(false)
     }
     loadFilme();

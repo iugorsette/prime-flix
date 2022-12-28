@@ -32,5 +32,80 @@
 .meus-filmes div a {
   text-decoration: none;
   color: #116feb;
-  margin-right:14px;
+  margin-right: 14px;
+}
+button {
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #800000;
+}
+
+button,
+button span {
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+button .text {
+  -webkit-transform: translateX(35px);
+  -ms-transform: translateX(35px);
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+button .icon {
+  position: absolute;
+  border-left: 1px solid #400000;
+  -webkit-transform: translateX(110px);
+  -ms-transform: translateX(110px);
+  transform: translateX(110px);
+  height: 30px;
+  width: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+button svg {
+  width: 16px;
+  fill: #eee;
+}
+
+button:hover {
+  background: #c41b1b;
+}
+
+button:hover .text {
+  color: transparent;
+}
+
+button:hover .icon {
+  width: 150px;
+  border-left: none;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+button:focus {
+  outline: none;
 }
