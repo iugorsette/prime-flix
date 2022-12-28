@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "./filme-info.css";
 
@@ -26,7 +27,6 @@ function Filme() {
           setloading(false);
         })
         .catch(() => {
-          console.log("filme nao encontrado");
           navigate("/", { replace: true });
           return;
         });
@@ -44,13 +44,13 @@ function Filme() {
     );
 
     if(hasFilme){
-        alert("Este filme ja foi salvo")
+      toast.warn("Este filme ja foi salvo")
         return;
     }
 
     filmesSalvos.push(filme)
     localStorage.setItem("@primeflix" , JSON.stringify(filmesSalvos))
-    alert("Filme salvo com sucesso")
+    toast.success("filme salvo com sucesso!")
   }
 
   if (loading) {
