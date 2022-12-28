@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import "./filme-info.css";
+
 import api from "../../services/api";
 
 function Filme() {
@@ -26,7 +28,7 @@ function Filme() {
     }
     loadFilme();
     setloading(false);
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (
@@ -38,15 +40,16 @@ function Filme() {
   return (
     <div className="filme-info">
       <h1>{filme.title}</h1>
-      <img
-        src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`}
-        alt={filme.title}
-      />
+      <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`}  alt={filme.title}/>
+
       <h3>Sinopse</h3>
-      <p>{filme.overview}</p>
+      <span>{filme.overview}</span>
+      <strong>Avaliacao: {filme.vote_average} / 10</strong>
 
-        <strong>{filme.vote_average}</strong>
-
+      <div className="area-buttons">
+        <button>Salvar</button>
+        <button>Trailer</button>        
+      </div>
     </div>
   );
 }
